@@ -1,0 +1,4 @@
+/node_modules/
+.vscode/
+# Arquivos de sistema
+.DS_Store
