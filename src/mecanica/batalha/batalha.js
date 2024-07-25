@@ -63,7 +63,7 @@ export async function batalha(heroi, npc) {
             heroi.restaurarPersonagem();
             await digitarTexto(chalk.cyan(`\nVida restaurada: ${heroi.vida}\n`));
             heroi.exibirPersonagem();
-            await clearWithDelay(4000);
+            await clearWithDelay(7000);
             break;
         }
 

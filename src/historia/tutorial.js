@@ -26,8 +26,9 @@ O jogo segue o estilo clássico de RPGs de turno. A cada rodada, escolha uma hab
 - **[4] Ataque Especial:** Um golpe poderoso, mas tenha cuidado! Ele tem 1/4 de chance de falhar.
 
 🔹 **Habilidades de Buff:**
-- **[2] Aumento de Ataque:** Potencialize sua força para causar mais dano.
-- **[3] Aumento de Defesa:** Fortaleça sua defesa para absorver mais danos.
+- **[2] Aumento de Defesa:** Fortaleça sua defesa para absorver mais danos.
+- **[3] Aumento de Ataque:** Potencialize sua força para causar mais dano.
+ 
 
 🔹 **Dicas para Iniciantes:**
 - Se prefere uma experiência mais simples, escolha a classe **GUERREIRO**.
@@ -72,7 +73,7 @@ Agora, vamos escolher a classe do seu personagem e começar a aventura!
                 heroi.adicionarHabilidade('Ira dos Deuses do Raio', 30, 'Especial');
                 break;
             case 'Guerreiro':
-                heroi = new PersPrincipal('Garen Paladino', 70, 70, 1, 14, 20, 10, 0, 'Guerreiro');
+                heroi = new PersPrincipal('Kristian Marec', 70, 70, 1, 14, 20, 10, 0, 'Guerreiro');
                 heroi.adicionarHabilidade('Fúria do Trovão', 25, 'Ataque');
                 heroi.adicionarHabilidade('Conquistador de Aço', 1.1, 'Defesa');
                 heroi.adicionarHabilidade('Ira', 1.05, 'Aumento Ataque');
@@ -98,13 +99,13 @@ export async function iniciarJogo() {
     if (heroi) {
         console.log(chalk.bold('Herói criado:'));
         console.log(chalk.bold(`Você escolheu a classe: ${heroi.classes}`));
-        await digitarTexto(chalk.bold(`\n${heroi.nome} estava indo fazer seu registro na Guilda dos Caçadores, quando de repente se deparou com Goblins famintos por sangue. Goblins são criaturas agressivas`));
+        await digitarTexto(chalk.bold(`\nEnquanto ${heroi.nome} estava a caminho de se registrar na Guilda dos Caçadores, de repente, um goblin sedento de sangue surgiu, iniciando uma batalha feroz. Conhecidos por sua agressividade, esses goblins são adversários perigosos.`));
         await digitarTexto(chalk.bold('\nCombate iniciado!'));
         const npc = new Inimigo('Goblin', 40, 40, 1, 2, 5, 5, 10); // Recebe 8 parâmetros
         npc.adicionarHabilidade('Smash', 10, 'Ataque');
         npc.adicionarHabilidade('Shield', 1.5, 'Defesa');
         await batalha(heroi, npc); // Inicia a batalha
-        await digitarTexto(chalk.bold(`Parabéns, você derrotou o inimigo.`));
+        await digitarTexto(chalk.bold(`Muito bem, você completou o [TUTORIAL].`));
         await historia1(heroi); // Passa o herói para a função historia1
         await novaMissao(heroi)// Passa o herói para a função novaMissao
     }

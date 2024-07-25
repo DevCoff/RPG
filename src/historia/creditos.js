@@ -8,6 +8,11 @@ export const creditos = [
     'Produtor: Stey Silva',
     'Roteiro: Stey Silva',
     'Elenco Principal: Shayane, Gin Freecs, Serena',
+    `Música: Bonfire by Alexander Nakarada
+    https://www.serpentsoundstudios.com/
+    Music Promoted By: https://RoyaltyFreePlanet.com
+    Creative Commons Attribution 4.0
+    https://creativecommons.org/licenses/by/4.0/`,
     'Agradecimentos: Me da um emprego!',
     'Fim.'
 ];

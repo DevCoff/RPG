@@ -18,7 +18,7 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
     await digitarTexto(chalk.bold(`\nA Torre tinha um sistema que ao entrar nela sua luta já era marcada de forma automática, o seu nome apareceu em um telão junto ao nome do seu adversário!`));
 
     // Primeiro adversário
-    let adversario1 = new Inimigo('Leonardo Messi', 55, 55, 3, 20, 10, 20, 10);
+    let adversario1 = new Inimigo('Balgolor Foggift', 55, 55, 3, 20, 10, 20, 10);
     adversario1.adicionarHabilidade('Chute do Gavião', 20, 'Ataque');
     adversario1.adicionarHabilidade('Defesa de Ferro', 1.5, 'Defesa');
     await digitarTexto(chalk.red(`\n${heroi.nome} X ${adversario1.nome}`));
@@ -31,7 +31,7 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
     await digitarTexto(chalk.bold('Novamente aparece seu nome e seu próximo adversário.'));
 
     // Segundo adversário
-    let adversario2 = new Inimigo('Tom Haland', 55, 60, 3, 25, 5, 5, 15);
+    let adversario2 = new Inimigo('Satoru Endo', 55, 60, 3, 25, 5, 5, 15);
     adversario2.adicionarHabilidade('Impacto do Trovão', 25, 'Ataque');
     adversario2.adicionarHabilidade('Escudo Flamejante', 1.6, 'Defesa');
     adversario2.adicionarHabilidade('Vôo do Dragão', 15, 'Especial');
@@ -47,7 +47,7 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
     await digitarTexto(chalk.bold(`De repente o telão brilha!`));
 
     // Terceiro adversário
-    let adversario3 = new Inimigo('Gin Freecs', 70, 80, 5, 60, 30, 5, 300);
+    let adversario3 = new Inimigo("D'uzan", 70, 80, 5, 60, 30, 5, 300);
     adversario3.adicionarHabilidade('Leigan', 40, 'Ataque');
     adversario3.adicionarHabilidade('Dragon Drive', 30, 'Ataque')
     adversario3.adicionarHabilidade('Aura Eletrostática', 1.5, 'Defesa');

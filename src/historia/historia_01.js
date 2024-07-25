@@ -16,7 +16,7 @@ export async function historia1(heroi) {
     const balconista = 'Shayenne';
 
     // Mensagens iniciais
-    await digitarTexto(chalk.bold(`\n${heroi.nome} ao chegar na Taverna da Guilda dos Caçadores, se depara com a balconista ${balconista}.`));
+    await digitarTexto(chalk.bold(`\n${heroi.nome} ao chegar na Taverna da Guilda dos Caçadores, se dirige até a balconista ${balconista}.`));
     await digitarTexto(chalk.bgRed(`${balconista}:`))
     await digitarTexto(chalk.bold(`\n Olá, no que posso te ajudar?`));
     await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))

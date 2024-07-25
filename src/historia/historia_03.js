@@ -71,7 +71,7 @@ export async function historia3(heroi) {
     await digitarTexto(chalk.bgCyan(`${serena}:\n`));
     await digitarTexto(chalk.bold('Ah, estou com tanta saudades dos meus pais, espero encontrar eles logo, vamos o caminho é por aqui!\n\n'));
     await digitarTexto(chalk.bold(meio.trim() + '\n\n'), 30);
-
+    prompt('ENTER PARA CONTINUAR: ');
     // A história irá mudar de acordo com o seu progresso. Se você sobreviveu e venceu, vai ter um final muito interessante ou não.
     if (heroi.lvl <= 3) {
         await digitarTexto(chalk.bold('Narrador:\n'));
@@ -88,7 +88,7 @@ export async function historia3(heroi) {
         await digitarTexto(chalk.bold(`${heroi.nome} escuta um riso, o Dragão estava rindo de toda a situação.\n`));
         await digitarTexto(chalk.bold(`Ele avança em direção ao Dragão, sem medo do inimigo.\n`));
         await digitarTexto(chalk.bold(`Bastou um balançar de asas e ${heroi.nome} caiu em desespero.\n`));
-        await digitarTexto(chalk.bgRed('Dragão Ancião:\n'));
+        await digitarTexto(chalk.bgRed('Dragão Acnologia:\n'));
         await digitarTexto(chalk.bold('Que patético, os humanos são tão frágeis.\n'));
         await digitarTexto(chalk.bold('Narrador:\n'));
         await digitarTexto(chalk.bold('O dragão bateu suas asas e foi embora, deixando sua marca.\n'));
@@ -103,17 +103,17 @@ export async function historia3(heroi) {
         await digitarTexto(chalk.bold(`Venha, enfrente-me! Poupe a garota; esta batalha é minha!\n`));
         await digitarTexto(chalk.bold('Narrador:\n'));
         await digitarTexto(chalk.bold(`O dragão olhou para o humano com surpresa e pensou...`));
-        await digitarTexto(chalk.bgRed('Dragão Ancião:\n'));
+        await digitarTexto(chalk.bgRed('Dragão Acnologia:\n'));
         await digitarTexto(chalk.underline(`Os humanos são, de fato, fascinantes.\n`));
-        await digitarTexto(chalk.bgRed('Dragão Ancião:\n'));
+        await digitarTexto(chalk.bgRed('Dragão Acnologia:\n'));
         await digitarTexto(chalk.bold(`Humano, qual é o seu nome?`));
         await digitarTexto(chalk.bgCyan(`${heroi.nome}:\n`));
         await digitarTexto(chalk.bold(`Meu nome é ${heroi.nome}.\n`));
-        await digitarTexto(chalk.bgRed('Dragão Ancião:\n'));
+        await digitarTexto(chalk.bgRed('Dragão Acnologia:\n'));
         await digitarTexto(chalk.bold(`Lembrarei de você ${heroi.nome}. Estarei esperando na Ilha das Chamas pelo seu desafio. Prepare-se, torne-se mais forte e venha me enfrentar.`));
         await digitarTexto(chalk.bold('Narrador:\n'));
         await digitarTexto(chalk.bold(`O dragão bateu suas asas e se foi.\nO reencontro dos dois estava selado pelo destino. Seria esse o desfecho de uma sina ou apenas o início de um grande confronto?`));
-        await digitarTexto(chalk.bold(`Um tempo depois, ${heroi.nome} já havia se recupado.`))
+        await digitarTexto(chalk.bold(`Um tempo depois, ${heroi.nome} já havia se recuperado.`))
         await digitarTexto(chalk.bgCyan(`${serena}:\n`));
         await digitarTexto(chalk.bold(`${heroi.nome}, estamos quase lá. Olhe, quero te apresentar à minha família.`));
         await digitarTexto(chalk.bold('Narrador:\n'));
