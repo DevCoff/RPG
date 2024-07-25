@@ -20,7 +20,7 @@ export async function chooseHabilidade(heroi) {
     const question = {
         type: 'list',
         name: 'selectedHabilidade',
-        message: 'Escolha uma habilidade:',
+        message: '',
         choices: habilidadesNomes
     };
 
@@ -38,6 +38,11 @@ export async function chooseHabilidade(heroi) {
             return null;
         }
     } catch (error) {
-        console.error('Erro ao escolher a habilidade:', error);
+        // Verificamos se o erro é devido ao encerramento do programa pelo usuário
+        if (error.message.includes('force closed')) {
+            console.log('Programa encerrado pelo usuário. Até a próxima!');
+        } else {
+            console.log('Ocorreu um erro: ', error);
+        }
     }
 }

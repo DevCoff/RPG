@@ -11,41 +11,45 @@ import { novaMissao } from './historia_02.js'
 // vamos criar o personagem, definir a classe e as regras do jogo
 export async function tutorial() {
     try {
-        const textoTutorial = `
-============================
-          TUTORIAL DE BATALHA
-============================
+        const titulo = chalk.cyan('               TUTORIAL DE BATALHA');
+        const linha = '='.repeat(50);
 
-Bem-vindo ao tutorial de batalha! Aqui está uma visão geral de como jogar:
+        const texto = `
+        Bem-vindo ao tutorial de batalha! Aqui está uma visão geral de como jogar:
+        
+        ${chalk.cyan('🔹 Jogo de Turnos:')}
+        O jogo segue o estilo clássico de RPGs de turno. A cada rodada, escolha uma habilidade para usar contra seu adversário.
+        
+        ${chalk.cyan('🔹 Habilidades de Ataque:')}
+        - [1] Ataque Normal: Um golpe básico contra o inimigo.
+        - [4] Ataque Especial: Um golpe poderoso, mas tenha cuidado! Ele tem 1/4 de chance de falhar.
+        
+        ${chalk.cyan('🔹 Habilidades de Buff:')}
+        - [2] Aumento de Defesa: Fortaleça sua defesa para absorver mais danos.
+        - [3] Aumento de Ataque: Potencialize sua força para causar mais dano.
+        
+        ${chalk.cyan('🔹 Dicas para Iniciantes:')}
+        - Se prefere uma experiência mais simples, escolha a classe **GUERREIRO**.
+        
+        ${chalk.cyan('🔹 Navegação no Jogo:')}
+        - Use as setas para cima e para baixo para explorar menus e diálogos.
+        - Pressione **Enter** para confirmar sua escolha.
+        
+        ⚠️ Atenção:
+        Por favor, aguarde o menu de interação ser carregado antes de clicar em qualquer coisa.
+        
+        Agora, vamos escolher a classe do seu personagem e começar a aventura!
+        `;
 
-🔹 **Jogo de Turnos:**
-O jogo segue o estilo clássico de RPGs de turno. A cada rodada, escolha uma habilidade para usar contra seu adversário.
+        const contorno = `
+        ${linha}
+        ${titulo}
+        ${linha}
+        ${texto}
+        ${linha}
+        `;
 
-🔹 **Habilidades de Ataque:**
-- **[1] Ataque Normal:** Um golpe básico contra o inimigo.
-- **[4] Ataque Especial:** Um golpe poderoso, mas tenha cuidado! Ele tem 1/4 de chance de falhar.
-
-🔹 **Habilidades de Buff:**
-- **[2] Aumento de Defesa:** Fortaleça sua defesa para absorver mais danos.
-- **[3] Aumento de Ataque:** Potencialize sua força para causar mais dano.
- 
-
-🔹 **Dicas para Iniciantes:**
-- Se prefere uma experiência mais simples, escolha a classe **GUERREIRO**.
-
-🔹 **Navegação no Jogo:**
-- Use as setas para cima e para baixo para explorar menus e diálogos.
-- Pressione **Enter** para confirmar sua escolha.
-
-⚠️ **Atenção:**
-Por favor, aguarde o menu de interação ser carregado antes de clicar em qualquer coisa.
-
-Agora, vamos escolher a classe do seu personagem e começar a aventura!
-
-============================
-`;
-
-        await digitarTexto(chalk.bold(textoTutorial));
+        await digitarTexto(chalk.bold(contorno));
         // aqui usamos o inquirer para criar um menu interativo, com switch case para as escolhas que o usuario irá fazer
         const classesPrompt = {
             type: 'list',
@@ -59,21 +63,21 @@ Agora, vamos escolher a classe do seu personagem e começar a aventura!
 
         switch (answers.classe) {
             case 'Assassino':
-                heroi = new PersPrincipal('Astarion', 45, 45, 1, 15, 10, 20, 0, 'Assassino');
-                heroi.adicionarHabilidade('Ataque Furtivo', 22, 'Ataque');
+                heroi = new PersPrincipal('Astarion', 50, 45, 1, 15, 10, 20, 0, 'Assassino');
+                heroi.adicionarHabilidade('Ataque Furtivo', 25, 'Ataque');
                 heroi.adicionarHabilidade('Defesa das Sombras', 1.05, 'Defesa');
                 heroi.adicionarHabilidade('Dança das Espadas', 1.05, 'Aumento Ataque');
                 heroi.adicionarHabilidade('Ataque Mortal', 25, 'Especial');
                 break;
             case 'Mago':
-                heroi = new PersPrincipal('Magi', 45, 45, 1, 20, 5, 15, 0, 'Mago');
+                heroi = new PersPrincipal('Magi', 50, 50, 1, 20, 5, 15, 0, 'Mago');
                 heroi.adicionarHabilidade('Fúria do Trovão', 25, 'Ataque');
-                heroi.adicionarHabilidade('Aura Eletrostática', 1.05, 'Defesa');
+                heroi.adicionarHabilidade('Aura Eletrostática', 1.1, 'Defesa');
                 heroi.adicionarHabilidade('Bênção das Tempestades', 1.05, 'Aumento Ataque');
                 heroi.adicionarHabilidade('Ira dos Deuses do Raio', 30, 'Especial');
                 break;
             case 'Guerreiro':
-                heroi = new PersPrincipal('Kristian Marec', 70, 70, 1, 14, 20, 10, 0, 'Guerreiro');
+                heroi = new PersPrincipal('Kristian Marec', 65, 65, 1, 14, 20, 10, 0, 'Guerreiro');
                 heroi.adicionarHabilidade('Fúria do Trovão', 25, 'Ataque');
                 heroi.adicionarHabilidade('Conquistador de Aço', 1.1, 'Defesa');
                 heroi.adicionarHabilidade('Ira', 1.05, 'Aumento Ataque');
@@ -88,8 +92,12 @@ Agora, vamos escolher a classe do seu personagem e começar a aventura!
         return heroi;
 
     } catch (error) {
-        console.error(chalk.red('Erro ao escolher a classe:'), error);
-        return null;
+        // Verificamos se o erro é devido ao encerramento do programa pelo usuário
+        if (error.message.includes('force closed')) {
+            console.log('Programa encerrado pelo usuário. Até a próxima!');
+        } else {
+            console.log('Ocorreu um erro: ', error);
+        }
     }
 }
 

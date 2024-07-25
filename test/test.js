@@ -38,10 +38,10 @@ describe('Teste de aumento de atributos e restauração', function () {
         expect(heroi.defesa).to.equal(30);
         expect(heroi.vida).to.equal(110);
         expect(heroi.vidaMaxima).to.equal(110);
-        expect(heroi.atqMaximo).to.equal(32); // Corrigido para refletir a lógica do código
-        expect(heroi.defMaxima).to.equal(22);
+        expect(heroi.atqMaximo).to.equal(40); // Corrigido para refletir a lógica do código
+        expect(heroi.defMaxima).to.equal(30);
         expect(heroi.velocidade).to.equal(20);
-        expect(heroi.habilidades[0].poder).to.equal(52); // Primeiro habilidade aumentada em 12
+        expect(heroi.habilidades[0].poder).to.equal(50); // Primeiro habilidade aumentada em 12
         expect(heroi.habilidades[1].poder).to.equal(45); // Segunda habilidade multiplicada por 1.5
     });
 

@@ -3,7 +3,10 @@
 // vamos importar o inquirer
 import { iniciarJogo } from '../historia/tutorial.js'
 import inquirer from 'inquirer';
-import { playMusic, stopMusic } from '../music/tocar.js'
+
+// CASO ESTEJA USANDO O MACOS, DESCOMENTE A IMPORTACAO ABAIXO E TAMBEM O CHAMADO DA FUNCAO NO MENU.
+
+// import { playMusic, stopMusic } from '../music/tocar.js'
 
 export async function menu() {
     const menuInicial = {
@@ -13,11 +16,15 @@ export async function menu() {
         choices: ['Iniciar o Jogo', 'Sair']
     };
 
-    // Especifique o caminho relativo ao arquivo de música
-    const musicFilePath = './src/music/bonfire.mp3';
 
-    // Inicia a reprodução da música
-    playMusic(musicFilePath);
+    // DESCOMENTE O CODIGO ABAIXO PARA ATIVAR A MUSICA
+
+    // const musicFilePath = './src/music/bonfire.mp3';
+
+    // // Inicia a reprodução da música
+    // playMusic(musicFilePath);
+
+    // ACIMA ˆˆ
 
     try {
         const answers = await inquirer.prompt(menuInicial);
@@ -27,10 +34,18 @@ export async function menu() {
             iniciarJogo();
         } else if (answers.menu == 'Sair') {
             console.log('Saindo do jogo...');
-            stopMusic(); // Para a música antes de sair
+
+            // stopMusic();     // DESCOMENTE O STOPMUSIC CASO ESTEJA USANDO O MACOS
+
+            // Para a música antes de sair
             process.exit(1); // Encerra o processo Node.js
         }
     } catch (error) {
-        console.error('Erro ao iniciar o jogo:', error);
+        // Verificamos se o erro é devido ao encerramento do programa pelo usuário
+        if (error.message.includes('force closed')) {
+            console.log('Programa encerrado pelo usuário. Até a próxima!');
+        } else {
+            console.log('Ocorreu um erro: ', error);
+        }
     }
 }

@@ -45,7 +45,7 @@ export async function batalha(heroi, npc) {
 
         // Turno do herói
         try {
-            await digitarTexto(chalk.bold('Escolha uma habilidade para usar:'));
+            await digitarTexto(chalk.cyan('Escolha uma habilidade para usar:'));
             const habilidadeEscolhida = await chooseHabilidade(heroi);
             if (habilidadeEscolhida) {
                 await ataque(heroi, npc, habilidadeEscolhida);
@@ -59,8 +59,8 @@ export async function batalha(heroi, npc) {
 
         if (npc.vida <= 0) {
             await digitarTexto(chalk.bold(`\n${npc.nome} foi derrotado!\n`));
-            heroi.addExp(npc);
             heroi.restaurarPersonagem();
+            heroi.addExp(npc);
             await digitarTexto(chalk.cyan(`\nVida restaurada: ${heroi.vida}\n`));
             heroi.exibirPersonagem();
             await clearWithDelay(7000);
@@ -80,13 +80,13 @@ export async function batalha(heroi, npc) {
         }
 
         if (heroi.vida <= 0) {
-            if (npc.nome != 'Gin Freecs') {
+            if (npc.nome != "D'uzan") {
                 await digitarTexto(chalk.magenta(`\n${heroi.nome} foi derrotado!\n`));
                 await digitarTexto(chalk.bgRed(`YOU DIED`));
                 await encerrarJogo(1);
             } else {
                 await digitarTexto(chalk.magenta(`\n${heroi.nome} foi derrotado!\n`));
-                await digitarTexto(chalk.bgRed('Mesmo que eu tenha vencido.'));
+                await digitarTexto(chalk.red('Mesmo que eu tenha vencido.'));
             }
             break;
         }

@@ -1,28 +1,30 @@
-import player from 'play-sound';
+// PARA ATIVAR O PLAY SOUND USE NPM INSTALL PLAY-SOUND e descomente o código abaixo
 
-const audio = player();
-let musicProcess; // Variável para armazenar o processo de música
+// import player from 'play-sound';
 
-export const playMusic = (file) => {
-    if (musicProcess) {
-        musicProcess.kill(); // Encerra o processo de música se já estiver tocando
-    }
+// const audio = player();
+// let musicProcess; // Variável para armazenar o processo de música
 
-    musicProcess = audio.play(file, (err) => {
-        if (err) {
-            console.error(`\n\n\nErro ao tocar áudio: ${err}`);
-        }
-    });
+// export const playMusic = (file) => {
+//     if (musicProcess) {
+//         musicProcess.kill(); // Encerra o processo de música se já estiver tocando
+//     }
 
-    // Reinicia a música quando o processo atual terminar
-    musicProcess.on('close', () => {
-        playMusic(file);
-    });
-};
+//     musicProcess = audio.play(file, (err) => {
+//         if (err) {
+//             console.error(`\n\n\nErro ao tocar áudio: ${err}`);
+//         }
+//     });
 
-export const stopMusic = () => {
-    if (musicProcess) {
-        musicProcess.kill(); // Encerra o processo de música
-        console.log('\n\n\n\nMúsica finalizada.');
-    }
-};
+//     // Reinicia a música quando o processo atual terminar
+//     musicProcess.on('close', () => {
+//         playMusic(file);
+//     });
+// };
+
+// export const stopMusic = () => {
+//     if (musicProcess) {
+//         musicProcess.kill(); // Encerra o processo de música
+//         console.log('\n\n\n\nMúsica finalizada.');
+//     }
+// }

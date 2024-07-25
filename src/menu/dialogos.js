@@ -15,9 +15,12 @@ export async function escolherMissao(message, missoes) {
 
         // Retorna a missão escolhida pelo usuário
         return answers.missao;
-    } catch (erro) {
-        // Trata erros que podem ocorrer ao exibir o prompt ou processar a escolha
-        console.error('Houve um problema ao tentar processar sua escolha. Por favor, reinicie o programa e tente novamente.');
-        return null; // Retorna null em caso de erro
+    } catch (error) {
+        // Verificamos se é devido ao encerramento do programa pelo usuário
+        if (error.message.includes('force closed')) {
+            console.log('Programa encerrado pelo usuário.');
+        } else {
+            console.log('Ocorreu um erro: ', error);
+        }
     }
 }

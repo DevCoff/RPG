@@ -1,28 +1,15 @@
 import { PersPadrao } from './pers_padrao.js';
-import { Habilidade } from '../habilidade/habilidade.js'
 import chalk from 'chalk';
 
 // Classe do personagem principal, que herda de PersPadrao e adiciona funcionalidades específicas
 export class PersPrincipal extends PersPadrao {
     constructor(nome, vida, vidaMaxima, lvl, ataque, defesa, velocidade, exp, classes) {
         super(nome, vida, vidaMaxima, lvl, ataque, defesa, velocidade);
-        this.habilidades = []; // Lista de habilidades do personagem
+        // this.habilidades = []; // Lista de habilidades do personagem
         this.exp = exp; // Experiência atual do personagem
         this.maxExp = 50; // Experiência necessária para o próximo nível
         this.classes = classes; // Classe do personagem (ex: Assassino, Mago)
     }
-
-    // Adiciona uma nova habilidade ao personagem
-    adicionarHabilidade(nome, poder, tipo) {
-        const habilidade = new Habilidade(nome, poder, tipo);
-        this.habilidades.push(habilidade);
-    }
-
-    // Lista todas as habilidades do personagem
-    listarHabilidades() {
-        return this.habilidades;
-    }
-
     // Exibe as habilidades do personagem em um formato legível
     exibirHabilidade() {
         if (this.habilidades.length === 0) {
@@ -61,14 +48,13 @@ export class PersPrincipal extends PersPadrao {
             if (this.habilidades.length > 3) {
                 this.habilidades[3].poder += 5;
             }
-            console.log(`Você subiu para o lvl: ${this.lvl}.\nAtributos aumentados! Vida Máxima: ${this.vidaMaxima}, Ataque: ${this.ataque}, Defesa: ${this.defesa}, Velocidade: ${this.velocidade}`);
         } else if (this.classes === 'Mago') {
             this.vida += 10;
-            this.atqMaximo += 12;
-            this.defMaxima += 2;
+            this.atqMaximo += 20;
+            this.defMaxima += 10;
             this.vidaMaxima += 10;
             this.ataque += 20;
-            this.defesa += 15;
+            this.defesa += 10;
             this.velocidade += 10;
             if (this.habilidades.length > 0) {
                 this.habilidades[0].poder += 10;
@@ -81,7 +67,6 @@ export class PersPrincipal extends PersPadrao {
             if (this.habilidades.length > 3) {
                 this.habilidades[3].poder += 5;
             }
-            console.log(`Você subiu para o lvl: ${this.lvl}.\nAtributos aumentados! Vida Máxima: ${this.vidaMaxima}, Ataque: ${this.ataque}, Defesa: ${this.defesa}, Velocidade: ${this.velocidade}`);
         } else {
             this.vida += 20;
             this.atqMaximo += 8;
@@ -101,7 +86,6 @@ export class PersPrincipal extends PersPadrao {
             if (this.habilidades.length > 3) {
                 this.habilidades[3].poder += 5;
             }
-            console.log(`Você subiu para o lvl: ${this.lvl}.\nAtributos aumentados! Vida Máxima: ${this.vidaMaxima}, Ataque: ${this.ataque}, Defesa: ${this.defesa}, Velocidade: ${this.velocidade}`);
         }
     }
 
@@ -113,18 +97,19 @@ export class PersPrincipal extends PersPadrao {
             this.exp -= this.maxExp; // Atualiza exp restante após o aumento de nível
             this.maxExp = Math.round(this.maxExp * 1.8); // Aumenta o requisito de exp para o próximo nível
             this.aumentarAtributos(); // Aumenta os atributos
+            console.log(chalk.blue(`\nVocê subiu para o lvl ${this.lvl}:\n  Atributos aumentados! Vida Máxima: ${this.vidaMaxima}, Ataque: ${this.ataque.toFixed(2)}, Defesa: ${this.defesa.toFixed(2)}, Velocidade: ${this.velocidade}`));
         } else {
-            console.log(`Faltam ${this.maxExp - this.exp} de Experiência para o próximo nível`);
+            console.log(chalk.green(`Faltam ${this.maxExp - this.exp} de Experiência para o próximo nível`));
         }
     }
 
     // Exibe os dados do personagem no console
     exibirPersonagem() {
-        console.log(`   Nome: ${chalk.bgGreen(this.nome)}
+        console.log(`   Nome: ${chalk.blue(this.nome)}
 Vida: ${chalk.green(this.vida)}/${chalk.green(this.vidaMaxima)}
 lvl: ${chalk.green(this.lvl)}
-Ataque: ${chalk.green(this.ataque)}
-Defesa: ${chalk.green(this.defesa)}
+Ataque: ${chalk.green(this.ataque.toFixed())}
+Defesa: ${chalk.green(this.defesa.toFixed())}
 Velocidade: ${chalk.green(this.velocidade)}
 Exp: ${chalk.green(this.exp)}/${chalk.green(this.maxExp)}`);
     }

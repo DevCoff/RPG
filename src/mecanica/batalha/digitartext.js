@@ -1,6 +1,6 @@
 // funcao que exibe um texto no terminal como se estivesse sendo digitado.
 // a velocidade pode ser ajustada com o parametro delay, mude se achar que está lento ou rápido
-export async function digitarTexto(texto, delay = 20) {
+export async function digitarTexto(texto, delay = 1) {
     // Itera sobre cada caractere do texto
     for (let i = 0; i < texto.length; i++) {
         // Exibe o caractere atual no terminal
