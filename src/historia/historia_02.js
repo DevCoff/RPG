@@ -35,7 +35,7 @@ A promessa da Torre é tão tentadora quanto cruel: aquele que alcançar o últi
 
 E assim, a Torre de Batalha continua a desafiar os audaciosos, os corajosos e os impiedosos. Será que você terá a força, a astúcia e a resiliência necessárias para superar seus 500 andares e reivindicar o desejo prometido? A aventura começa agora, e a sua história está prestes a ser escrita nas páginas da Torre.
                 \n`;
-            await digitarTexto(chalk.bold(historia), 3);
+            await digitarTexto(chalk.bold(historia), 30);
             prompt(chalk.green('\n\nAPERTE ENTER PARA CONTINUAR...'));
             await torre(heroi);
             break;
@@ -44,7 +44,7 @@ E assim, a Torre de Batalha continua a desafiar os audaciosos, os corajosos e os
             await digitarTexto(chalk.bgRed(`${balconista}:`));
             await digitarTexto(chalk.bold(`\nTudo bem, quando mudar de ideia estarei aqui para te auxiliar!`));
             await digitarTexto(chalk.bold(`Temos uma missão urgente de escolta, na Nova Aldeia, gostaria de ir?`));
-            await digitarTexto(chalk.bgCyan(`${heroi.nome}:\n`));
+            await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:\n`));
             await digitarTexto(chalk.bold(`Claro, já estou indo!`));
             await historia3(heroi);
             break;

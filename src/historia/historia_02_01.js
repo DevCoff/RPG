@@ -28,7 +28,7 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
 
     // Subir para o próximo andar
     await digitarTexto(chalk.bold('Narrador:\n'));
-    await digitarTexto(chalk.bold(`${heroi.nome} sobe para o próximo andar.`));
+    await digitarTexto(chalk.bold(`${chalk.cyan(heroi.nome)}sobe para o próximo andar.`));
     await digitarTexto(chalk.bold('Novamente aparece seu nome e seu próximo adversário.'));
 
     // Segundo adversário
@@ -41,8 +41,8 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
 
     // Diálogo antes do terceiro adversário
     await digitarTexto(chalk.bold('Narrador:\n'));
-    await digitarTexto(chalk.bold(`Após uma dura batalha, ${heroi.nome} olha para a tela e vê um garoto que tinha pelo menos 12 anos em pé no ringue e pensa.`));
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:\n`))
+    await digitarTexto(chalk.bold(`Após uma dura batalha, ${chalk.cyan(heroi.nome)} olha para a tela e vê um garoto que tinha pelo menos 12 anos em pé no ringue e pensa.`));
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:\n`))
     await digitarTexto(chalk.underline(`Aquele garoto está subindo a torre, vencendo seus adversários com somente um golpe...`));
     await digitarTexto(chalk.bold('Narrador:\n'));
     await digitarTexto(chalk.bold(`De repente o telão brilha!`));
@@ -54,29 +54,29 @@ export async function torre(heroi) { // recebe como parametro o Heroi, pois os d
     adversario3.adicionarHabilidade('Aura Eletrostática', 1.5, 'Defesa');
     adversario3.adicionarHabilidade('Leikoudan', 25, 'Especial');
     await digitarTexto(chalk.red(`\n${heroi.nome} X ${adversario3.nome}`));
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nNão irei perder, para um pivete!\n`));
     await digitarTexto(chalk.bold('Narrador:'));
     await digitarTexto(chalk.bold(`\nUma batalha se inicia, por algum motivo desconhecido ${heroi.nome} conta seu sonho para o adversário, seja por admiração ou por capricho.\n`));
     await digitarTexto(chalk.bgRed(`${adversario3.nome}:`))
     await digitarTexto(chalk.bold(`\nQue interessante, se você me vencer eu tenho informações sobre o tesouro!\n`));
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nChega de conversa, vamos lutar!\n`));
     await batalha(heroi, adversario3);
     await digitarTexto(chalk.bgRed(`${adversario3.nome}: `))
     await digitarTexto(chalk.bold(`\nEu irei te contar a história que ouvi.\n`))
     await digitarTexto(chalk.bold('Narrador:'));
-    await digitarTexto(chalk.bold(`\n${adversario3.nome} e ${heroi.nome} foram até a lanchonete da torre e conversaram sobre o tesouro deixado pelo lendário Matador de Dragões\n`))
+    await digitarTexto(chalk.bold(`\n${adversario3.nome} e  ${chalk.cyan(heroi.nome)} foram até a lanchonete da torre e conversaram sobre o tesouro deixado pelo lendário Matador de Dragões\n`))
     await digitarTexto(chalk.bold(`Depois de uma longa conversa.\n. . .\n`))
     await digitarTexto(chalk.bgRed(`${adversario3.nome}:`))
     await digitarTexto(chalk.bold((`\nEu encontrei uma garota, que parece ter a minha idade, ela diz saber onde fica o tesouro, mas parece ser perigoso, se ainda quiser posso te dar a localizão.\n`)))
 
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nClaro que eu quero a localização, irei encontrar ela agora!\n`))
 
     await digitarTexto(chalk.bgRed(`${adversario3.nome}:`))
     await digitarTexto(chalk.bold((`\nA garota está localizada em um vilarejo chamado Nova Aldeia, parece que ela estava perdida e apareceu nessa aldeia pedindo ajuda,\n`)))
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nMuito obrigado ${adversario3.nome}, lembrarei do favor em meu coração.\n`))
     await digitarTexto(chalk.bgRed(`${adversario3.nome}:`))
     await digitarTexto(chalk.bold(`\nFoi o minimo que eu poderia fazer, sei que você poderá ajudar ela, até mais.\n`))

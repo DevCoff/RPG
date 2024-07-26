@@ -16,14 +16,14 @@ export async function historia1(heroi) {
     const balconista = 'Shayenne';
 
     // Mensagens iniciais
-    await digitarTexto(chalk.bold(`\n${heroi.nome} ao chegar na Taverna da Guilda dos Caçadores, se dirige até a balconista ${balconista}.\n`));
+    await digitarTexto(chalk.bold(`\n${chalk.cyan(heroi.nome)} ao chegar na Taverna da Guilda dos Caçadores, se dirige até a balconista ${balconista}.\n`));
     await digitarTexto(chalk.bgRed(`${balconista}:`))
     await digitarTexto(chalk.bold(`\nOlá, no que posso te ajudar?\n`));
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nVim me cadastrar para ser um Caçador. Meu maior sonho é encontrar o tesouro deixado pelo Lendário Guerreiro Matador de Dragões!\n`));
     await digitarTexto(chalk.bgRed(`${balconista}:`))
     await digitarTexto(chalk.bold(`\nVocê é mais um dos esquisitões com sonhos estranhos, tanto faz.\nPara conseguir a licença de Caçador, você precisa passar algumas missões!\n`));
-    await digitarTexto(chalk.bgCyan(`${heroi.nome}:`))
+    await digitarTexto(chalk.bgBlackBright(`${heroi.nome}:`))
     await digitarTexto(chalk.bold(`\nIsso é moleza!\n`))
     const MISSÕES = ['Caçar 3 Goblins', 'Caçar 3 Slimes', 'Caçar 3 Escorpiões do Deserto'];
     // aqui usamos o inquirer, ele cria um menu interativo, ainda nao dominei, mas vi muitos videos e achei que seria interessante usar isso

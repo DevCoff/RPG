@@ -16,13 +16,19 @@ export async function tutorial() {
 
         const texto = `
         Bem-vindo ao tutorial de batalha! Aqui está uma visão geral de como jogar:
-        
+
+        ${chalk.red(`⚠️ Atenção:`)}
+        Por favor, aguarde o menu de interação ser carregado antes de clicar em qualquer coisa.
+
         ${chalk.cyan('🔹 Jogo de Turnos:')}
-        O jogo segue o estilo clássico de RPGs de turno. A cada rodada, escolha uma habilidade para usar contra seu adversário.
+        O jogo segue o estilo clássico de RPGs de turno.
+        A cada rodada, escolha uma habilidade para usar contra seu adversário.
+        
         
         ${chalk.cyan('🔹 Habilidades de Ataque:')}
         - [1] Ataque Normal: Um golpe básico contra o inimigo.
-        - [4] Ataque Especial: Um golpe poderoso, mas tenha cuidado! Ele tem 1/4 de chance de falhar.
+        - [4] Ataque Especial: Um golpe poderoso, mas tenha cuidado!
+        Ele tem 1/4 de chance de falhar.
         
         ${chalk.cyan('🔹 Habilidades de Buff:')}
         - [2] Aumento de Defesa: Fortaleça sua defesa para absorver mais danos.
@@ -35,8 +41,7 @@ export async function tutorial() {
         - Use as setas para cima e para baixo para explorar menus e diálogos.
         - Pressione **Enter** para confirmar sua escolha.
         
-        ⚠️ Atenção:
-        Por favor, aguarde o menu de interação ser carregado antes de clicar em qualquer coisa.
+        
         
         Agora, vamos escolher a classe do seu personagem e começar a aventura!
         `;
@@ -106,8 +111,8 @@ export async function iniciarJogo() {
     const heroi = await tutorial();
     if (heroi) {
         console.log(chalk.bold('Herói criado:'));
-        console.log(chalk.bold(`Você escolheu a classe: ${heroi.classes}`));
-        await digitarTexto(chalk.bold(`\nEnquanto ${heroi.nome} estava a caminho de se registrar na Guilda dos Caçadores, de repente, um goblin sedento de sangue surgiu, iniciando uma batalha feroz. Conhecidos por sua agressividade, esses goblins são adversários perigosos.`));
+        console.log(chalk.bold(`Você escolheu a classe: ${chalk.cyan(heroi.classes)}`));
+        await digitarTexto(chalk.bold(`\nEnquanto ${chalk.cyan(heroi.nome)} estava a caminho de se registrar na Guilda dos Caçadores, de repente, um goblin sedento de sangue surgiu, iniciando uma batalha feroz. Conhecidos por sua agressividade, esses goblins são adversários perigosos.`));
         await digitarTexto(chalk.bold('\nCombate iniciado!'));
         const npc = new Inimigo('Goblin', 40, 40, 1, 2, 5, 5, 10); // Recebe 8 parâmetros
         npc.adicionarHabilidade('Smash', 10, 'Ataque');
