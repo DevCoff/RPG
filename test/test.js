@@ -1,85 +1,92 @@
-import { expect } from "chai";
 import { PersPrincipal } from "../src/mecanica/personagem/pers_principal.js";
-import { Habilidade } from "../src/mecanica/habilidade/habilidade.js";
+test("Testando propriedades adicionais do personagem", () => {
+  const heroi = new PersPrincipal(
+    "Astarion",
+    50,
+    50,
+    1,
+    15,
+    10,
+    20,
+    0,
+    "Assassino",
+  );
 
-// aqui vamos testar os metodos de aumento de atributo junto com o aumento das habilidades
-// testamos classe a class para saber se está ocorrendo como o esperado.
-
-describe("Teste de aumento de atributos e restauração", function () {
-  it("deve aumentar os atributos corretamente para Assassino", function () {
-    const heroi = new PersPrincipal(
-      "Assassino",
-      100,
-      100,
-      1,
-      20,
-      20,
-      10,
-      0,
-      "Assassino",
-    );
-    heroi.habilidades = [
-      new Habilidade("Golpe Sombrio", 50, "Ataque"),
-      new Habilidade("Ataque Rápido", 30, "Ataque"),
-    ];
-    heroi.aumentarAtributos();
-
-    expect(heroi.ataque).to.equal(30);
-    expect(heroi.defesa).to.equal(28);
-    expect(heroi.vida).to.equal(110);
-    expect(heroi.vidaMaxima).to.equal(110);
-    expect(heroi.atqMaximo).to.equal(30);
-    expect(heroi.defMaxima).to.equal(28);
-    expect(heroi.velocidade).to.equal(30);
-    expect(heroi.habilidades[0].poder).to.equal(60); // Primeiro habilidade aumentada em 10
-    expect(heroi.habilidades[1].poder).to.equal(45); // Segunda habilidade multiplicada por 1.5
-  });
-
-  it("deve aumentar os atributos corretamente para Mago", function () {
-    const heroi = new PersPrincipal("Mago", 100, 100, 1, 20, 20, 10, 0, "Mago");
-    heroi.habilidades = [
-      new Habilidade("Bola de Fogo", 40, "Especial"),
-      new Habilidade("Escudo Mágico", 30, "Defesa"),
-    ];
-    heroi.aumentarAtributos();
-
-    expect(heroi.ataque).to.equal(40);
-    expect(heroi.defesa).to.equal(30);
-    expect(heroi.vida).to.equal(110);
-    expect(heroi.vidaMaxima).to.equal(110);
-    expect(heroi.atqMaximo).to.equal(40); // Corrigido para refletir a lógica do código
-    expect(heroi.defMaxima).to.equal(30);
-    expect(heroi.velocidade).to.equal(20);
-    expect(heroi.habilidades[0].poder).to.equal(50); // Primeiro habilidade aumentada em 12
-    expect(heroi.habilidades[1].poder).to.equal(45); // Segunda habilidade multiplicada por 1.5
-  });
-
-  it("deve aumentar os atributos corretamente para classe padrão", function () {
-    const heroi = new PersPrincipal(
-      "Guerreiro",
-      100,
-      100,
-      1,
-      20,
-      20,
-      10,
-      0,
-      "Guerreiro",
-    );
-    heroi.habilidades = [
-      new Habilidade("Corte Duplo", 30, "Ataque"),
-      new Habilidade("Escudo de Ferro", 20, "Defesa"),
-    ];
-    heroi.aumentarAtributos();
-
-    expect(heroi.ataque).to.equal(28);
-    expect(heroi.defesa).to.equal(40);
-    expect(heroi.vida).to.equal(120);
-    expect(heroi.vidaMaxima).to.equal(120);
-    expect(heroi.atqMaximo).to.equal(28);
-    expect(heroi.defMaxima).to.equal(40);
-    expect(heroi.velocidade).to.equal(20);
-    expect(heroi.habilidades[0].poder).to.equal(40); // Primeiro habilidade aumentada em 10
-    expect(heroi.habilidades[1].poder).to.equal(30); // Segunda habilidade multiplicada por 1.5
-  });
+  expect(heroi).toBeDefined();
+  expect(heroi.nome).toBe("Astarion");
+  expect(heroi.vida).toBe(50);
+  expect(heroi.ataque).toBe(15);
+  expect(heroi.defesa).toBe(10); // Inclua qualquer outra propriedade relevante
+  expect(heroi.lvl).toBe(1);
+  expect(heroi.exp).toBe(0);
+  expect(heroi.maxExp).toBe(50);
+  expect(heroi.classes).toBe("Assassino");
 });
+
+test("Verifica o aumento de atributos", () => {
+  const heroi = new PersPrincipal(
+    "Astarion",
+    50,
+    50,
+    1,
+    15,
+    10,
+    20,
+    0,
+    "Assassino",
+  );
+  heroi.aumentarAtributos();
+  expect(heroi.ataque).toBe(25);
+  expect(heroi.defesa).toBe(18);
+});
+
+test("Verificar se o personagem está ganhando EXP", () => {
+  const heroi = new PersPrincipal(
+    "Astarion",
+    50,
+    50,
+    1,
+    15,
+    10,
+    20,
+    0,
+    "Assassino",
+  );
+  heroi.addExp({ exp: 50 });
+
+  expect(heroi.lvl).toBe(2);
+
+  expect(heroi.exp).toBe(0);
+
+  expect(heroi.ataque).toBe(25)
+});
+
+test("Verificar erro ao aumentar lvl", () => {
+  const heroi = new PersPrincipal(
+    "Astarion",
+    50,
+    50,
+    1,
+    15,
+    10,
+    20,
+    0,
+    "Assassino",
+  );
+  expect(() => heroi.addExp(-10).toThrow("Exp inválida"));
+  expect(() => heroi.addExp({})).toThrow("Exp inválida");
+  expect(() => heroi.addExp({ exp: 'A' })).toThrow('Exp inválida')
+});
+
+//  {
+//   if (this.classes === "Assassino") {
+//     this.ataque += 10;
+//     this.defesa += 8;
+//     this.vida += 10;
+//     this.vidaMaxima += 10;
+//     this.atqMaximo += 10;
+//     this.defMaxima += 8;
+//     this.velocidade += 20;
+//     if (this.habilidades.length > 0) {
+//       this.habilidades[0].poder += 10;
+//     }

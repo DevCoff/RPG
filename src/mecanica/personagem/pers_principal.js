@@ -104,6 +104,10 @@ export class PersPrincipal extends PersPadrao {
 
   // Adiciona experiência ao personagem e atualiza o nível se necessário
   addExp(npc) {
+    if (typeof npc !== 'object' || npc.exp === undefined || typeof npc.exp !== 'number' || npc.exp < 0) {
+      throw new Error("Exp inválida");
+    }
+
     this.exp += npc.exp;
     if (this.exp >= this.maxExp) {
       this.lvl += 1;
