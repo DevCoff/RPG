@@ -33,7 +33,7 @@ Este é um jogo de batalha de RPG baseado em turnos, onde o jogador escolhe um p
 2. Clone o repositório do projeto.
 3. Navegue até o diretório do projeto.
 4. Instale as dependências usando `npm install`.
-5. Inicie o jogo com o comando `node <nome-do-arquivo-principal>.js`.
+5. Inicie o jogo com o comando `node .`.
 
 ## Dependências
 
