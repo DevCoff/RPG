@@ -34,6 +34,7 @@ Este é um jogo de batalha de RPG baseado em turnos, onde o jogador escolhe um p
 3. Navegue até o diretório do projeto.
 4. Instale as dependências usando `npm install`.
 5. Inicie o jogo com o comando `node .`.
+6. Para iniciar os teste automatizados use `npm run test:watch`
 
 ## Dependências
 

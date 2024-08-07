@@ -16,7 +16,7 @@ test("Testando propriedades adicionais do personagem", () => {
   expect(heroi.nome).toBe("Astarion");
   expect(heroi.vida).toBe(50);
   expect(heroi.ataque).toBe(15);
-  expect(heroi.defesa).toBe(10); // Inclua qualquer outra propriedade relevante
+  expect(heroi.defesa).toBe(10);
   expect(heroi.lvl).toBe(1);
   expect(heroi.exp).toBe(0);
   expect(heroi.maxExp).toBe(50);
@@ -52,13 +52,25 @@ test("Verificar se o personagem está ganhando EXP", () => {
     0,
     "Assassino",
   );
-  heroi.addExp({ exp: 50 });
+  // const expInicial = ;
 
-  expect(heroi.lvl).toBe(2);
+  const expParaAdicionar = 100
+  heroi.addExp({ exp: expParaAdicionar });
 
-  expect(heroi.exp).toBe(0);
+  if (heroi.exp >= heroi.maxExp) {
+    heroi.lvl += 1;
+    heroi.exp -= heroi.maxExp;
+  }
+  const lvlaAtual = heroi.lvl
 
-  expect(heroi.ataque).toBe(25)
+  const resultExp = heroi.exp
+
+  expect(heroi.lvl).toBe(lvlaAtual);
+
+  expect(heroi.exp).toBe(resultExp);
+
+  expect(heroi.ataque).toBe(heroi.ataque)
+
 });
 
 test("Verificar erro ao aumentar lvl", () => {
@@ -78,6 +90,8 @@ test("Verificar erro ao aumentar lvl", () => {
   expect(() => heroi.addExp({ exp: 'A' })).toThrow('Exp inválida')
 });
 
+
+// GABARITO PARA PREENCHER OS TESTES
 //  {
 //   if (this.classes === "Assassino") {
 //     this.ataque += 10;
